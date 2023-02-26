@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from 'react';
 import { GoSearch } from 'react-icons/go';
+import {SiMicrosoftbing} from 'react-icons/si';
 import Image from 'next/image';
 
 type Result = {
@@ -46,7 +47,7 @@ function Home() {
 
         {/* logo */}
         <div className="">
-          <Image className="w-64" width={64} height={32} src="https://c.neevacdn.net/image/fetch/s--0MWwRheq--/https%3A//tse3.mm.bing.net/th%3Fid%3DOIP.qIgHt9nwJTD985Ze62KpGwHaC3%26pid%3DApi?savepath=th" alt="logo" />
+          <SiMicrosoftbing className="w-6 h-6" size={64} />
         </div>
         <div className='flex h-fit w-full align-middle '>
           <form className=''>
@@ -79,8 +80,15 @@ function Home() {
       <div className="container flex flex-col gap-4">
         {
           results?.map(result => (
-            <p key={result.title}>{result.title}</p>
-          ))
+          <div className="flex flex-col w-3/2 gap-2 p-2  rounded-md" key={result.link}>
+
+            <a href={result.link}>
+              <p className="text-sm">{result.link}</p>
+              <h2 className="text-blue-500 text-xl font-semibold hover:underline">{result.title}</h2>
+            </a>
+            <p className="text-sm">{result.snippet}</p>
+          </div>
+        ))
         }
       </div>
     </div >
